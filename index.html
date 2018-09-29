@@ -3,9 +3,51 @@
 
 <head>
 	<title>冉奇的简历</title>
-	<link rel="stylesheet" href="./a.css">
+	<link rel="stylesheet" href="./style.css">
 	<script src="//at.alicdn.com/t/font_829132_ilvpsgo8bfg.js"></script>
 	<style type="text/css">
+		.loading {
+			width: 200px;
+			height: 200px;
+			position: relative;
+		}
+		
+		.loading::before,
+		.loading::after {
+			content: '';
+			display: block;
+			width: 10px;
+			height: 10px;
+			border: 1px solid black;
+			border-radius: 50%;
+			background: #000;
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			margin: auto;
+			animation: s 1.5s infinite linear;
+		}
+
+		.loading::after {
+			animation-delay: 0.75s;
+		}
+
+		@keyframes s {
+			0% {
+				width: 0px;
+				height: 0px;
+				opacity: 1
+			}
+
+			100% {
+				width: 100px;
+				height: 100px;
+				opacity: 0
+			}
+		}
+
 		.icon {
 			width: 1em;
 			height: 1em;
@@ -13,10 +55,25 @@
 			fill: currentColor;
 			overflow: hidden;
 		}
+		.site-welcome{
+			display: none;
+			position: fixed;
+			top: 0;left: 0;width: 100%;height: 100%;
+			background: #888;
+			z-index: 1;
+			justify-content: center;
+			align-items: center;
+		}
+		.site-welcome.active{
+			display: flex;
+		}
 	</style>
 </head>
 
 <body>
+	<div id="siteWelcome" class="site-welcome active">
+		<div class="loading"></div>
+	</div>
 	<div class="top-nav-bar">
 		<div class="top-nav-bar-inner  clearfix">
 			<a class="logo" href="#" alt="logo" style="float:left;">
@@ -180,6 +237,9 @@
 			</div>
 		</div>
 	</section>
+	<script>
+		siteWelcome.classList.remove('active')
+	</script>
 </body>
 
 </html>
