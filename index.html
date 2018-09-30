@@ -131,8 +131,8 @@
 	</div>
 
 	<main>
-		<div id="siteAbout" class="userCard"">
-			<div class=" pictureAndText clearfix">
+		<div id="siteAbout" class="userCard">
+			<div class="pictureAndText clearfix">
 			<div class="picture">
 				<img src="./img/00.jpg" width=299 height=347 alt="头像">
 			</div>
@@ -234,7 +234,7 @@
 			</li>
 		</ol>
 	</section>
-	<section id="siteWorks"class="protfolio">
+	<section id="siteWorks" class="protfolio">
 		<h2>作品集</h2>
 		<nav>
 			<ol class="clearfix">
@@ -271,6 +271,7 @@
 			</div>
 		</div>
 	</section>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/17.2.0/Tween.min.js"></script>
 	<script>
 		setTimeout(function () {
 			siteWelcome.classList.remove('active')
@@ -285,24 +286,44 @@
 		}
 
 		let liTags = document.querySelectorAll('nav.menu > ul > li')
-		for(let i=0; i<liTags.length; i++){
-			liTags[i].onmouseenter = function(x){
+		for (let i = 0; i < liTags.length; i++) {
+			liTags[i].onmouseenter = function (x) {
 				x.currentTarget.classList.add('active')
-		    }
-			liTags[i].onmouseleave = function(x){
+			}
+			liTags[i].onmouseleave = function (x) {
 				x.currentTarget.classList.remove('active')
 			}
 		}
 
 		let aTags = document.querySelectorAll('nav.menu > ul > li > a')
-		for(let i=0; i<aTags.length; i++){
-			aTags[i].onclick = function(x){
+
+		function animate(time) {
+			requestAnimationFrame(animate);
+			TWEEN.update(time);
+		}
+		requestAnimationFrame(animate);
+
+		for (let i = 0; i < aTags.length; i++) {
+			aTags[i].onclick = function (x) {
 				x.preventDefault()
 				let a = x.currentTarget
 				let href = a.getAttribute('href')
 				let element = document.querySelector(href)
 				let top = element.offsetTop
-				window.scrollTo(0,top-80)
+
+				let currentTop = window.scrollY
+				let targetTop = top - 80
+				let s = targetTop - currentTop
+				var coords = {y: currentTop}; 
+				var t = Math.abs((s/100)*300)
+				if (t>500){t = 500}
+				var tween = new TWEEN.Tween(coords) 
+					.to({y: targetTop}, t) 
+					.easing(TWEEN.Easing.Quadratic.InOut) 
+					.onUpdate(function () { 
+						window.scrollTo(0,coords.y)
+					})
+					.start();
 			}
 		}
 	</script>
