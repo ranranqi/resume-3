@@ -37,6 +37,22 @@ ul,ol,li{
     outline: 10px solid red;
 }
 
+[data-x].offset{
+    transform: translateY(300px);
+}
+[data-x]{
+    transform: translateY(0px);
+    transition: all 0.7s;
+}
+@keyframes slideUp{
+    0%{
+        transform: translateY(-30px);
+    }
+    100%{
+        transform: translateY(0);
+    }
+}
+
 .top-nav-bar {
     padding-top: 23px;
     padding-bottom: 23px;
@@ -337,6 +353,7 @@ section.skills .progressBar{
     background: #FBE0E1;
     border-radius: 3px;
     margin: 4px 0 40px;
+    overflow: hidden;
 }
 
 section.skills .progressBar .progress{
@@ -344,6 +361,12 @@ section.skills .progressBar .progress{
     background: #E8676B;
     width: 70%;
     border-radius: 3px;
+    transform: translateX(0);
+    transition: all 1s;
+}
+
+section.skills.offset .progress{
+    transform: translateX(-100%);
 }
 
 section.protfolio{
