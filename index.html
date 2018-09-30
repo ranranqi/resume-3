@@ -295,6 +295,14 @@
 				specialTags[i].classList.remove('active')
 			}
 			specialTags[minIndex].classList.add('active')
+			let id = specialTags[minIndex].id
+			let a = document.querySelector('a[href="#' + id +'"]')
+			let li = a.parentNode
+			let brothersAndMe = li.parentNode.children
+			for(let i =0;i <brothersAndMe.length; i++){
+				brothersAndMe[i].classList.remove('active')
+			}
+			li.classList.add('active')
 		}
 		
 		let liTags = document.querySelectorAll('nav.menu > ul > li')
