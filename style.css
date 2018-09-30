@@ -33,6 +33,10 @@ ul,ol,li{
     clear: both;
 }
 
+[data-x].active{
+    outline: 10px solid red;
+}
+
 .top-nav-bar {
     padding-top: 23px;
     padding-bottom: 23px;
