@@ -3,6 +3,7 @@
 
 <head>
 	<title>冉奇的简历</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/css/swiper.min.css">
 	<link rel="stylesheet" href="./style.css">
 	<script src="//at.alicdn.com/t/font_829132_ilvpsgo8bfg.js"></script>
 	<style type="text/css">
@@ -76,7 +77,7 @@
 </head>
 
 <body>
-	
+
 	<div id="topNavBar" class="top-nav-bar">
 		<div class="top-nav-bar-inner  clearfix">
 			<a class="logo" href="#" alt="logo" style="float:left;">
@@ -234,52 +235,43 @@
 	</section>
 	<section data-x id="siteWorks" class="protfolio">
 		<h2>作品集</h2>
-		<nav>
-			<ol class="clearfix">
-				<li id="protfolio1">所有</li>
-				<li id="protfolio2">框架</li>
-				<li id="protfolio3">原生JS&amp CSS</li>
-			</ol>
-			<div id="protfoliobar" class="bar state-1">
-				<div class="bar-inner"></div>
+		<!-- Slider main container -->
+		<div class="swiper-container">
+			<!-- Additional required wrapper -->
+			<div class="swiper-wrapper">
+				<!-- Slides -->
+				<img src="./img/works/nav.jpg" class="swiper-slide">
+				<img src="./img/works/canvas2.jpg" class="swiper-slide">
+				<img src="./img/works/apple.jpg" class="swiper-slide">
 			</div>
-		</nav>
-		<script>
-			protfolio1.onclick = function () {
-				protfoliobar.className = 'bar state-1'
-			}
-			protfolio2.onclick = function () {
-				protfoliobar.className = 'bar state-2'
-			}
-			protfolio3.onclick = function () {
-				protfoliobar.className = 'bar state-3'
-			}
-		</script>
-
-
-		<div class="works" style="height: 597px;">
-			<div class="big" style="top: 0;left: 0;">
-				<img src="./img/big.jpg" alt="作品1">
-			</div>
-			<div class="small" style="top: 0;left: 644px;">
-				<img src="./img/s1.jpg" alt="作品2">
-			</div>
-			<div class="small" style="top: 298px;left: 644px;">
-				<img src="./img/s2.jpg" alt="作品3">
-			</div>
+			<div class="swiper-pagination"></div>
 		</div>
+		<div class="swiper-button-prev"></div>
+		<div class="swiper-button-next"></div>
 	</section>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/17.2.0/Tween.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/js/swiper.min.js"></script>
 	<script>
-		
-			//添加offset类
-			let specialTags = document.querySelectorAll('[data-x]')
-			for (let i =0; i<specialTags.length; i++) {
-				specialTags[i].classList.add('offset')
-			}
+		var mySwiper = new Swiper('.swiper-container', {
+			loop: true,
+			pagination: {
+				el: '.swiper-pagination',
+			},
+			navigation: {
+				nextEl: '.swiper-button-next',
+				prevEl: '.swiper-button-prev',
+			},
+		})
+	</script>
+	<script>
+		//添加offset类
+		let specialTags = document.querySelectorAll('[data-x]')
+		for (let i = 0; i < specialTags.length; i++) {
+			specialTags[i].classList.add('offset')
+		}
 
-		
-		findClosest()	
+
+		findClosest()
 		window.onscroll = function (xxx) {
 			if (window.scrollY > 0) {
 				topNavBar.classList.add('sticky')
@@ -288,10 +280,11 @@
 			}
 			findClosest()
 		}
-			function findClosest(){
-				let specialTags = document.querySelectorAll('[data-x]')
+
+		function findClosest() {
+			let specialTags = document.querySelectorAll('[data-x]')
 			let minIndex = 0
-			for (let i =1; i<specialTags.length; i++) {
+			for (let i = 1; i < specialTags.length; i++) {
 				if (Math.abs(specialTags[i].offsetTop - window.scrollY) < Math.abs(specialTags[minIndex].offsetTop - window.scrollY)) {
 					minIndex = i
 				}
@@ -299,15 +292,15 @@
 			//minIndex 就是离窗口顶部最近的元素
 			specialTags[minIndex].classList.remove('offset')
 			let id = specialTags[minIndex].id
-			let a = document.querySelector('a[href="#' + id +'"]')
+			let a = document.querySelector('a[href="#' + id + '"]')
 			let li = a.parentNode
 			let brothersAndMe = li.parentNode.children
-			for(let i =0;i <brothersAndMe.length; i++){
+			for (let i = 0; i < brothersAndMe.length; i++) {
 				brothersAndMe[i].classList.remove('highlight')
 			}
 			li.classList.add('highlight')
-			}
-		
+		}
+
 		let liTags = document.querySelectorAll('nav.menu > ul > li')
 		for (let i = 0; i < liTags.length; i++) {
 			liTags[i].onmouseenter = function (x) {
