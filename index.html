@@ -64,7 +64,7 @@
 		<div data-x id="siteAbout" class="userCard">
 			<div class="pictureAndText clearfix">
 				<div class="picture">
-					<img src="./img/00.jpg" width=299 height=347 alt="头像">
+					<img src="./img/avatar.jpg" width=299 height=347 alt="头像">
 				</div>
 				<div class="text">
 					<span class="welcome">Hello
@@ -167,26 +167,41 @@
 	</section>
 	<section data-x id="siteWorks" class="protfolio">
 		<h2>作品集</h2>
+
+		<!-- view，用户看得见的东西-->
 		<!-- Slider main container -->
-		<div class="swiper-container">
-			<!-- Additional required wrapper -->
-			<div class="swiper-wrapper">
-				<!-- Slides -->
-				<img src="./img/works/nav1.png" class="swiper-slide">
-				<img src="./img/works/canvas2.jpg" class="swiper-slide">
-				<img src="./img/works/apple.jpg" class="swiper-slide">
+		<div id="mySlides">
+			<div class="swiper-container">
+				<!-- Additional required wrapper -->
+				<div class="swiper-wrapper">
+					<!-- Slides -->
+					<img src="./img/works/nav1.png" class="swiper-slide">
+					<img src="./img/works/canvas2.jpg" class="swiper-slide">
+					<img src="./img/works/apple.jpg" class="swiper-slide">
+				</div>
+				<div class="swiper-pagination"></div>
 			</div>
-			<div class="swiper-pagination"></div>
+			<div class="swiper-button-prev"></div>
+			<div class="swiper-button-next"></div>
 		</div>
-		<div class="swiper-button-prev"></div>
-		<div class="swiper-button-next"></div>
+	</section>
+	<section>
+		<h2>留言</h2>
+		<form id="postMessageForm" style="width: 500px; margin: 60px auto;">
+			<input type="text" name="content">
+			<input type="submit" value="提交">
+		</form>
 	</section>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/17.2.0/Tween.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/js/swiper.min.js"></script>
+	<script src="//cdn.jsdelivr.net/npm/leancloud-storage@3.10.0/dist/av-min.js"></script>
+
+	<!-- 模块化 -->
 	<script src="./js/init-swiper.js"></script>
 	<script src="./js/auto-slide-up.js"></script>
 	<script src="./js/sticky-topbar.js"></script>
 	<script src="./js/smoothly-navigation.js"></script>
+	<script src="./js/message.js"></script>
 </body>
 
 </html>
