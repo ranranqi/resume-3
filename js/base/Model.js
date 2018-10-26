@@ -1,3 +1,5 @@
+//Model 就是一个模板
+
 window.Model = function(options){
     let resourceName = options.resourceName
     return {
